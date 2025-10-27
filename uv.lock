@@ -53,7 +53,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "django", specifier = ">=5.2.7" },
+    { name = "django", specifier = ">=5.1,<6" },
     { name = "djangorestframework", specifier = ">=3.16.1" },
 ]
 

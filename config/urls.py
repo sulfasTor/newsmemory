@@ -16,15 +16,16 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
+
 from api.views import (
+    ArticleLinkViewSet,
+    ArticleViewSet,
+    EntityViewSet,
+    ReadingViewSet,
     SourceViewSet,
     TagViewSet,
-    EntityViewSet,
-    ArticleViewSet,
-    ReadingViewSet,
-    ArticleLinkViewSet,
 )
 
 router = DefaultRouter()
@@ -39,3 +40,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include(router.urls)),
 ]
+
+handler400 = "api.errors.bad_request_json"
+handler403 = "api.errors.permission_denied_json"
+handler404 = "api.errors.not_found_json"
+handler500 = "api.errors.server_error_json"

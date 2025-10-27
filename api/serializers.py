@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Source, Tag, Article, Entity, ArticleEntity, Reading, ArticleLink
+
+from .models import Article, ArticleEntity, ArticleLink, Entity, Reading, Source, Tag
 
 
 class SourceSerializer(serializers.ModelSerializer):

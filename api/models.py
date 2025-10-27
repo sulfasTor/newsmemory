@@ -40,7 +40,7 @@ class Article(TimeStamped):
     byline = models.CharField(max_length=300, blank=True)
     language = models.CharField(max_length=16, blank=True)
     summary = models.TextField(blank=True)
-    content = models.TextField(blank=True)  # full text if you store it
+    content = models.TextField(blank=True)
     tags = models.ManyToManyField(Tag, blank=True, related_name="articles")
 
     class Meta:
@@ -91,11 +91,10 @@ class Reading(TimeStamped):
     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="readings")
     state = models.CharField(max_length=16, choices=STATES, default=TO_READ, db_index=True)
     read_at = models.DateTimeField(null=True, blank=True)
-    rating = models.PositiveSmallIntegerField(null=True, blank=True)  # 1..5
+    rating = models.PositiveSmallIntegerField(null=True, blank=True)
     notes = models.TextField(blank=True)
 
 
-# Optional: lightweight relation between articles (dedup/cluster)
 class ArticleLink(TimeStamped):
     FROM_REF, CITATION, UPDATE, DUPLICATE, SAME_STORY = (
         "ref",
