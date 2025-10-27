@@ -20,3 +20,12 @@ build-backend = "uv_build"
 dev = [
     "ruff>=0.14.2",
 ]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+lint.select = ["E", "F", "I", "B", "UP", "C90"]
+extend-exclude = ["migrations"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["api", "config"]
